@@ -30,10 +30,11 @@ app.use_reloader = True
 app.config['SECRET_KEY'] = 'hard to guess string from si364'
 ##Used createdb midterm to create db on postico which made the localhost work. Maybe work on name insertion that takes you
 ##to name of person with their favorite pokemons.
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://localhost/si364finalhanheum"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL') or "postgresql://localhost/si364finalhanheum"
 ## Provided:
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['HEROKU_ON'] = os.environ.get('HEROKU')
 
 ## Statements for db setup (and manager setup if using Manager)
 manager = Manager(app)
@@ -183,7 +184,7 @@ class Pictures(db.Model):
 
 class RegistrationForm(FlaskForm):
     email = StringField('Email:', validators=[Required(),Length(1,64),Email()])
-    trainer_name = StringField('trainer_name:',validators=[Required(),Length(1,64),Regexp('^[A-Za-z][A-Za-z0-9_.]*$',0,'Names must have only letters, numbers, dots or underscores')])
+    trainer_name = StringField('trainer_name:',validators=[Required(),Length(1,64)])
     password = PasswordField('Password:',validators=[Required(),EqualTo('password2',message="Passwords must match")])
     password2 = PasswordField("Confirm Password:",validators=[Required()])
     submit = SubmitField('Register User')
@@ -209,7 +210,7 @@ class NumberForm(FlaskForm):
 
 class TypeForm(FlaskForm):
     types = RadioField('Choose a pokemon type:', choices =[('flying', 'flying'),('normal','normal'),('fighting','fighting'),
-        ('poison','poison'),('ghost','ghost'),('pink','pink'),('electric','electric'),('red','red'),('dragon','dragon'),
+        ('poison','poison'),('ghost','ghost'),('dark','dark'),('electric','electric'),('grass','grass'),('dragon','dragon'),
         ('fairy','fairy'), ('water','water')], validators = [Required()]) 
     submit = SubmitField('Submit')
 
