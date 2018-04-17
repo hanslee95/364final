@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action = '/postnumber' method='POST'>
+	{{ form.hidden_tag() }}
+	{{ form.number.label }} {{ form.number() }} 
+	{{ form.submit() }}
+</form>
+
+
+{% endblock %}

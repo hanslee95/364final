@@ -1,0 +1,39 @@
+{% if current_user.is_authenticated %}
+    <a href="{{ url_for('logout') }}">Sign Out</a>
+{% else %}
+    <a href="{{ url_for('login') }}">Sign In</a>
+{% endif %}
+
+{% if current_user.is_authenticated and current_user.trainer_name %}
+	<p>Signed in as <strong>{{current_user.trainer_name}}</strong>
+{% endif %}
+
+<br>
+<br>
+
+{% block content %}
+<p><strong> Become a Pokemon Trainer and create your pokemon roster!</strong></p>
+<p><strong>Navigation</strong></p>
+{% endblock %}
+
+
+<div id = 'nav'>
+	<ul>
+		<li><a href="{{ url_for('register') }}">Register as a Trainer</a></li>
+		<li><a href="{{ url_for('login') }}">Pokemon Login</a></li>
+		<p>--------------------------------------------------------------------</p>
+		<li><a href="{{ url_for('discovered_pokemon') }}">All Pokemon Discovered</a></li>
+		<li><a href="{{ url_for('create_collection') }}">Create your collection</a></li>
+		<li><a href="{{ url_for('pictures') }}">Pokemon Gallery</a></li>
+		<p>--------------------------------------------------------------------</p>
+		<li><a href="{{ url_for('base') }}">Home</a></li>
+
+	</ul>
+</div>
+
+
+
+
+
+{% block content1 %}
+{% endblock %}

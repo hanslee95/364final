@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<h1>{{ collection.trainer_name }}'s Collection</h1>
+
+<strong><p>Pokemon:</p></strong>
+
+{% for p in pokemon %}
+	{{ p.poke_name }}
+    </br>
+{% endfor %}
+
+
+{% endblock %}

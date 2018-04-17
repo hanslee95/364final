@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>You have added <strong>{{ poke_name }} </strong> with strength  <strong>{{ poke_hp }} </strong> hp on your roster! </p>
+
+<form action ='/types' method='POST'>
+	{{ form.hidden_tag() }}
+	{{ form.types.label }} {{ form.types() }} 
+	{{ form.submit() }}
+</form>
+{% endblock %}

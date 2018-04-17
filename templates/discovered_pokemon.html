@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>All the pokemon discovered thus far! </p>
+
+<ul>
+{% for p in pokemon_discovered %}
+    <li>{{ p[0] }} -- <i>{{ p[1] }}hp</i></li>
+{% endfor %}
+</ul>
+
+{% if not pokemon_discovered %}
+    There are no pokemon discovered.
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1>Create your collection</h1>
+
+
+<form action="/collections" method="POST">
+	{{ form.hidden_tag() }}
+	{{ form.trainer_name.label }} {{ form.trainer_name() }}
+	{{ form.submit.label }}{{ form.submit() }}
+</form>
+
+{% endblock %}

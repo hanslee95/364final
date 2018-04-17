@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Register as a Trainer!</h1>
+
+
+
+<form method="POST">
+	{{ form.hidden_tag() }}
+	{{ form.email.label }} {{ form.email() }}
+	{{ form.trainer_name.label }} {{ form.trainer_name() }}
+    {{ form.password.label }} {{ form.password() }}
+    {{ form.password2.label }} {{ form.password2() }}
+	{{ form.submit.label }}{{ form.submit() }}
+</form>
+{% endblock %}
